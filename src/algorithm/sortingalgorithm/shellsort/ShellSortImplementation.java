@@ -1,12 +1,12 @@
-package algorithm.bubblesort;
+package algorithm.sortingalgorithm.shellsort;
 
 /**
- * Implementation of Bubble sort.
- * Complexity is O(n^2) i.e. quadratic.
- * Stable sort algorithm
+ * Implementation of Shell sort.
+ * Worst case Complexity is O(n^2) i.e. quadratic.
+ * UnStable sort algorithm
  *
  */
-public class BubbleSortImplementation {
+public class ShellSortImplementation {
     public static void main(String[] args) {
         int arr[] = {20, 35, -15, 7, 55, 1, -22, 7};
 
@@ -18,11 +18,16 @@ public class BubbleSortImplementation {
         System.out.println();
 
         //Sorting elements
-        for(int i = 0; i < arr.length -1; i++) {
-            for(int j = 0; j < ((arr.length -1) - i); j++) {
-                if(arr[j] > arr[j+1]) {
-                    swap(arr, j, j+1);
+        for(int gap = arr.length/2; gap > 0; gap /= 2) {
+
+            for(int i = gap; i < arr.length; i++) {
+                int newElement = arr[i];
+                int j = i;
+                while (j >= gap && arr[j - gap] > newElement) {
+                    arr[j] = arr[j - gap];
+                    j -= gap;
                 }
+                arr[j] = newElement;
             }
         }
 

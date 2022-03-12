@@ -1,12 +1,12 @@
-package algorithm.insertionsort;
+package algorithm.sortingalgorithm.bubblesort;
 
 /**
- * Implementation of Insertion sort.
+ * Implementation of Bubble sort.
  * Complexity is O(n^2) i.e. quadratic.
  * Stable sort algorithm
  *
  */
-public class InsertionSortImplementation {
+public class BubbleSortImplementation {
     public static void main(String[] args) {
         int arr[] = {20, 35, -15, 7, 55, 1, -22, 7};
 
@@ -16,14 +16,14 @@ public class InsertionSortImplementation {
             System.out.print(arr[i] + ", ");
 
         System.out.println();
+
         //Sorting elements
-        for(int i = 1; i < arr.length; i++) {
-            int newElement = arr[i];
-            int j;
-            for(j = i; j > 0 && (arr[j-1] > newElement); j--) {
-                    arr[j] = arr[j-1];
+        for(int i = 0; i < arr.length -1; i++) {
+            for(int j = 0; j < ((arr.length -1) - i); j++) {
+                if(arr[j] > arr[j+1]) {
+                    swap(arr, j, j+1);
+                }
             }
-            arr[j] = newElement;
         }
 
         //Printing elements
